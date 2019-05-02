@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Class Design</title>
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome-animation.css" rel="stylesheet" />
+    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/fontawesome-all.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<div id="headerBar">
+		<h1><a href="SDS_Launching_page.html"><i id="logo" class="fas fa-trophy"></i> CompetitionHub </a></h1>
+	</div>
+   <div class="container-fluid">
+      <div class="col-md-4">
+        <div id="sideBar">
+        <ul>
+          <li><a href="introduction.html">Introduction</a></li>
+          <li><a href="architecture.html">Architectural Pattern</a></li>
+          <li><a href="componentDesignSpecification.html">Component Design Specification and Interaction</a></li>
+          <li><a href="classdesign.html">Class Design</a></li>
+          <li><a href="databasedesign.html">Database Design</a></li>
+          <li><a href="api.html">API List</a></li>
+        </ul>
+       </div>
+      </div>
+    	<div id="content" class="col-md-8">
+		
+    	<h2> 4.0 Class Design </h2>
+        <h3> 4.1 Class Description </h3>
+		<div id="paragraph">
+			
+			1.User: We are using user class to store all the data about a user. Everytime a user registers to our system a new row of data will be stored and also for sign in we will match data from this class.
+			<br><br>
+			2.Organizer Team: Users create a organizer team to organize a competition. It may contain one or more user. The organizer team will create competition and will give update about the competition.
+			<br><br>
+			3.Competition: Organizer team creates the competition and any user will be able to participate in the competition. It will store the data about the users who are going to participate and also about the organizer who are organizing this.
+			<br><br>
+			4.Query: Many participants may have different set of queries related with the competition. So, we are creating a forum where any one will be able to ask anything. Queries will be stored against the userId.
+			<br><br>
+			5.Update: The competitions may have many updates which the participants must know. So, the organizer team will be able to give any update post. 
+			<br><br>
+			6.Category: Every competition must belong to a competition. The competition class will store the categoryId from which the competition belongs to. 
+
+			
+			
+			</div>
+
+			
+			
+		<h3> 4.2 Class Diagram </h3>
+			<div id="paragraph" style="text-align: center">
+				<img src="assets/img/Class Diagram.png" width="820" height="500" alt="Class Diagram" >
+				<b> Figure 4.2.1: Class Diagram </b>
+			</div>
+       
+	   <h3> 4.3 Details of each class </h3>
+		   <h4>User:</h4> <p>it will contain all types of users. Such as: Participants and organizers. The attributes of this class is: Id; password; name; competitionId(foreign key); organizerTeamId(foreign key); current institution.</p>
+
+<h4>Organizer Team: </h4> <p> this class is made up by one or multiple users. Any user can create a organizer team, add members. The attributes of this class is: Id; userId(foreign key); competitionId(foreign key); OrganizerName. </p>
+
+<h4> Competition:</h4> <p> Organizer team creates the competition and Participants can participate in the competition. There will also be a forum and discussion panel in every competition. The attributes of this class is: Id; userId(foreign key); organizerTeamId(foreign key); name; venue; date; deadline.</p>
+
+<h4> Query:</h4> <p> Every competition have a forum. Where any one can ask anything about the competition. And admin/any other user will answer to it. The attributes of this class is: Id; competitionId(foreign key); userId(foreign key); organizerTeamId(foreign key); comments.</p>
+
+<h4>Update:</h4> <p> Every competition will have a discussion page. Where the admin will post any update related with the Competition. Anyone will be able to comment on it. And admin will answer to it. The attributes of this class is: Id; competitionId(foreign key); userId(foreign key); organizerTeamId(foreign key); updateText; comments.</p>
+
+<h4> Category: </h4> <p> It is an abstract class. Every competition must belong to any category. The attributes of this class is: Id; categoryName.</p>
+
+
+    	</div>
+    </div>
+
+</body>
+</html> 
