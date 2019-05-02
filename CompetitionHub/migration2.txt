@@ -1,0 +1,37 @@
+<?php
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+class UpdateCompetitionTable extends Migration
+class CreateCatagoriesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('competitions', function($table){            
+            $table->integer('organizer_teams_id')->unsigned();
+            $table->foreign('organizer_teams_id')
+                ->references('id')
+                ->on('organizer_teams')
+                ->onDelete('cascade');
+});
+        Schema::create('catagories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->mediumText('description');
+            $table->timestamps();
+        });
+    }
+    /**
+@@ -30,6 +28,6 @@ public function up()
+     */
+    public function down()
+    {
+        //
+        Schema::dropIfExists('catagories');
+    }
+}
